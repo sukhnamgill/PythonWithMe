@@ -11,3 +11,4 @@ object_1=Cal(5)
 object_1.sq_of_num()
 object_1.cube()
 
+print("hello world")
