@@ -1,0 +1,1 @@
+print("Iam a Lesson of decorator")
