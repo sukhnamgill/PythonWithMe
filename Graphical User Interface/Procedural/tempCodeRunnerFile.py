@@ -1,0 +1,6 @@
+ont=QFont()
+    # # font.family("Arial")
+    # font.setFamily("Arial")
+    # font.setBold(1)
+    # font.setPointSize(32)
+    # lb.setFont(font)
