@@ -1,5 +1,3 @@
-    # elif(self.i==1):
-            
-        # else:
-        #     pass
-            
+
+import sys
+class Font(QWidget):
