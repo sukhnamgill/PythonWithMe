@@ -1,3 +1,2 @@
 
-import sys
-class Font(QWidget):
+        cal.setGridVisible(True)
