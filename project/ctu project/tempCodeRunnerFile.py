@@ -1,1 +1,2 @@
-g.png
+
+        background-color:#A2AAAD;

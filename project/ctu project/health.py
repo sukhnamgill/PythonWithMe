@@ -39,6 +39,19 @@ class Health(QTabWidget):
         # border:1px solid white;
         # border-radius:10px;
         # padding:10px}""")
+        self.setStyleSheet("""QTabWidget{
+        background-color:white}
+        QTabBar::tab{
+        color:#A2AAAD;
+        background-color:white;
+        border-radius:4px;
+        margin:5px;
+        padding:5px}
+        QTabBar::tab:hover{
+        border:1px solid #A2AAAD;}
+        QTabBar::tab:selected{
+        background-color:#A2AAAD;
+        color:white;}""")
        
        
         self.addTab(self.tab_1,"Calory Counter")
@@ -123,26 +136,53 @@ class Health(QTabWidget):
         self.stack_1=QWidget()
         self.stack_2=QWidget()
         self.stack_3=QWidget()
+        self.stack_4=QWidget()
 
         self.st.addWidget(self.stack_1)
         self.st.addWidget(self.stack_2)
         self.st.addWidget(self.stack_3)
+        self.st.addWidget(self.stack_4)
 
         self.li=QListWidget()
-        self.li.insertItem(1,"hello")
-        self.li.insertItem(2,"bye bye")
+        self.li.insertItem(1,"Chest")
+        self.li.insertItem(2,"Leg")
+        self.li.insertItem(3,"Bieciep")
+        self.li.insertItem(4,"triceip")
         self.li.currentRowChanged.connect(self.display)
 
     # calling functions
         box=QHBoxLayout(self.tab_2)
-        box.addWidget(self.st)
         box.addWidget(self.li)
+        box.addWidget(self.st)
+        self.li.setFixedWidth(130)
+        self.li.setStyleSheet("""QListWidget{
+        background-color:white;
+        padding:5px;
+        font-size:20px;
+        color:#A2AAAD;
+        border-radius:9px;
+        
+        }
+        QListWidget::item:hover {
+        background-color:white ; 
+        color:#A2AAAD;
+        border:1px solid #A2AAAD;
+        border-radius:4px;
+    }
+    QListWidget::item:selected{
+    background-color:#A2AAAD;
+    color:white;
+    
+    border-radius:4px;
+    
+    }""")
 
         
 
         self.option_1()
         self.option_2()
         self.option_3()
+        self.option_4()
 
         
     def ui_3(self):
@@ -184,6 +224,7 @@ class Health(QTabWidget):
         self.mov.start()
     def fun3(self):
         pass
+    
     def display(self,i):
         self.st.setCurrentIndex(i)
     def check(self,i):
@@ -193,17 +234,56 @@ class Health(QTabWidget):
 
     #stack of ui 2
     def option_1(self):
-        print("optin is clicked")
-        n=QPushButton(self.stack_1)
-        n.setText("iam sack button")
-        # n.move(0,150)
-    def option_2(self):
-        lab=QLabel(self.stack_2)
-        lab.setPixmap(QPixmap('my.jpg'))
+        lab1=QLabel(self.stack_1)
+        mov1=QMovie('fi.gif')
+        mov1.setScaledSize(QSize(300,300))
+        lab1.setMovie(mov1)
+        mov1.start()
 
-    def option_3(self):
+        lab=QLabel(self.stack_1)
+        mov=QMovie('fi.gif')
+        mov.setScaledSize(QSize(300,300))
+        lab.setMovie(mov)
+        mov.start()
+
+        lab2=QLabel(self.stack_1)
+        mov2=QMovie('fi.gif')
+        mov2.setScaledSize(QSize(300,300))
+        lab2.setMovie(mov2)
+        mov2.start()
+
+        lab3=QLabel(self.stack_1)
+        mov3=QMovie('fi.gif')
+        mov3.setScaledSize(QSize(300,300))
+        lab3.setMovie(mov3)
+        mov3.start()
+        #pack in to layout 
+        grid=QGridLayout(self.stack_1)
+        grid.addWidget(lab,0,0)
+        grid.addWidget(lab1,0,1)
+        grid.addWidget(lab2,1,0)
+        grid.addWidget(lab3,1,1)
+        
+    def option_2(self):
+        # lab=QLabel(self.stack_2)
+        # mov=QMovie('fi.gif')
+        # lab.setMovie(mov)
+        # mov.start()
         pass
 
+    def option_3(self):
+        # lab=QLabel(self.stack_3)
+        # mov=QMovie('fi.gif')
+        # lab.setMovie(mov)
+        # mov.start()
+        pass
+        
+    def option_4(self):
+        # lab=QLabel(self.stack_4)
+        # mov=QMovie('fi.gif')
+        # lab.setMovie(mov)
+        # mov.start()
+        pass
 
 
 
