@@ -6,28 +6,76 @@ class Health(QTabWidget):
     def __init__(self,parent=None):
         super(Health,self).__init__(parent)
         self.setGeometry(50,50,1000,500)
-        font=QFont("arial",25)
-        self.setFont(font)
+        font=QFont("arial",20)
+        self.setWindowIcon(QIcon('health.png'))
+        self.setWindowTitle("Health")
+        
+       
+        # self.setStyleSheet("""QTabWidget{
+        # background-color:black
+        # }""")
 
         #tab bar
         self.tab_1=QWidget()
         self.tab_2=QWidget()
         self.tab_3=QWidget()
+        self.tab_1.setStyleSheet("""QWidget{
+        background-color:white;
+        font-family: -apple-system;
+        color:black;
+        font-weight:900;
+        font-size:20px;
+        border:1px solid black;
+        border-radius:10px;
+        padding:10px}""")
+        # self.setStyleSheet("""QWidget{
+        # background:black;
+        # color:white;
+        # font-weight:900;
+        # background-repeat:no-repeat;
+        # opacity: 0.2;
+
+        # font-size:20px;
+        # border:1px solid white;
+        # border-radius:10px;
+        # padding:10px}""")
+       
        
         self.addTab(self.tab_1,"Calory Counter")
         self.addTab(self.tab_2,"Exercises")
         self.addTab(self.tab_3,"Diet")
         
+        
         #calling functions
         self.ui_1()
         self.ui_2()
         self.ui_3()
-
+        self.setFont(font)
+# this is  first 
     def ui_1(self):
+        
+        
+
         form=QFormLayout(self.tab_1)
-        form.maximumSize()
+        lab=QLabel(self.tab_1)
+        buton=QPushButton(self.tab_1)
+        buton.setIcon(QIcon('g.png'))
+        buton.setIconSize(QSize(201,201))
+        
+      
+        
+        lab.setText("Welcome In Calory-Counter ")
+        form.addRow(buton,lab)
+        lab.setStyleSheet("""QLabel{
+        background-color:white;
+        color:#0b6958;
+        border:None;
+        font-size:50px}""")
+        buton.setStyleSheet("""QPushButton{border:None}""")
+        # form.maximumSize()
         
         self.txt=QSpinBox()
+        
         form.addRow("AGE",self.txt)
         self.txt_2=QSpinBox()
         form.addRow("WEIGHT",self.txt_2)
@@ -35,11 +83,41 @@ class Health(QTabWidget):
         form.addRow("HEIGHT ",self.txt_3)
         self.boy=QRadioButton("Boy")
         self.girl=QRadioButton("Girl")
-        box=QHBoxLayout()
+       
+        #classes of spinbox to stylesheet
         
+        self.boy.setStyleSheet("""QRadioButton{
+                                 background-color:#9db6fc;
+                               border:1px silid #9db6fc;
+                               color:white;}""")
+        box=QHBoxLayout()
+        self.girl.setStyleSheet("""QRadioButton{
+                                 background-color:#f5abef;
+                                border:1px solid #f5abef;
+                               color:white;}""")
+        calculate=QPushButton("calculate")
+        reset=QPushButton("reset")
+        calculate.clicked.connect(self.calculate)
+        reset.clicked.connect(self.reset)
+        box2=QHBoxLayout()
         box.addWidget(self.girl)
         box.addWidget(self.boy)
         form.addRow("SEX       ",box)
+
+        box2.addWidget(reset)
+        box2.addWidget(calculate)
+        form.addRow(box2)
+    def calculate(self,i):
+        print("calculate button is pressed",i)
+        new=QDialog()
+        new.setWindowTitle("Result")
+        new.exec_()
+
+        n=self.txt_2.value()
+        print(n)
+    def reset(self):
+        print("reset")
+        self.txt_3.setValue(0)
     def ui_2(self):
         self.st=QStackedWidget()
         self.stack_1=QWidget()
@@ -93,12 +171,17 @@ class Health(QTabWidget):
         self.fun2()
         self.fun3()
         
+        
     def fun1(self):
         s=QPushButton(self.st1)
+    
         s.setText("iam butoon")
     def fun2(self):
         lab=QLabel(self.st2)
-        lab.setPixmap(QPixmap("my2.jpg"))
+        lab.setText("helo")
+        self.mov=QMovie("fi.gif")
+        lab.setMovie(self.mov)
+        self.mov.start()
     def fun3(self):
         pass
     def display(self,i):
@@ -126,8 +209,12 @@ class Health(QTabWidget):
 
 def main():
     app=QApplication(sys.argv)
-    win=Health()
+    win=Health() 
+   
     win.show()
+   
+    
+    
     sys.exit(app.exec_())
 if __name__=='__main__':
     main()
