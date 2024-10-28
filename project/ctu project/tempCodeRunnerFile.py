@@ -1,2 +1,2 @@
 
-    def fun5(self):
+        self.st.setCurrentIndex(i)

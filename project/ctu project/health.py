@@ -5,7 +5,8 @@ import sys
 class Health(QTabWidget):
     def __init__(self,parent=None):
         super(Health,self).__init__(parent)
-        self.setGeometry(50,50,1000,500)
+        self.setGeometry(50,50,2000,1500)
+        self.setMinimumSize(700,700)
         font=QFont("arial",20)
         self.setWindowIcon(QIcon('health.png'))
         self.setWindowTitle("Health")
@@ -118,18 +119,18 @@ class Health(QTabWidget):
         calculate=QPushButton("Calculate")
         self.boy.setChecked(True)
         reset=QPushButton("Reset")
-        reset.setStyleSheet("""QPushButton{background-color:yellow;
-                                color:black;
+        reset.setStyleSheet("""QPushButton{background-color:#6e706d;
+                                color:white;
                                 border:None;
                                 border-radius:4px;}
                             QPushButton:hover{
-                            background-color:red;}""")
-        calculate.setStyleSheet("""QPushButton{background-color:green;
+                            background-color:#4d4f4d;}""")
+        calculate.setStyleSheet("""QPushButton{background-color:#2e7eff;
                                 color:white;
                                 border:None;
                                 border-radius:4px;}
                                 QPushButton:hover{
-                            background-color:orange;}""")
+                            background-color:#025ff5;}""")
         calculate.clicked.connect(self.calculate)
         reset.clicked.connect(self.reset)
         box2=QHBoxLayout()
@@ -230,17 +231,23 @@ class Health(QTabWidget):
         self.stack_2=QWidget()
         self.stack_3=QWidget()
         self.stack_4=QWidget()
+        self.stack_5=QWidget()
+        self.stack_6=QWidget()
 
         self.st.addWidget(self.stack_1)
         self.st.addWidget(self.stack_2)
         self.st.addWidget(self.stack_3)
         self.st.addWidget(self.stack_4)
+        self.st.addWidget(self.stack_5)
+        self.st.addWidget(self.stack_6)
 
         self.li=QListWidget()
         self.li.insertItem(1,"Chest")
         self.li.insertItem(2,"Leg")
         self.li.insertItem(3,"Bieciep")
-        self.li.insertItem(4,"triceip")
+        self.li.insertItem(4,"Triceip")
+        self.li.insertItem(5,"Shoulder")
+        self.li.insertItem(6,"Back")
         self.li.currentRowChanged.connect(self.display)
 
     # calling functions
@@ -276,6 +283,8 @@ class Health(QTabWidget):
         self.option_2()
         self.option_3()
         self.option_4()
+        self.option_5()
+        self.option_6()
 
         
     def ui_3(self):
@@ -322,12 +331,12 @@ class Health(QTabWidget):
     border-radius:4px;
     
     }""")
-        self.lis.insertItem(1,"vitamin A")
-        self.lis.insertItem(2,"vitamin B")
-        self.lis.insertItem(3,"vitamin C")
-        self.lis.insertItem(4,"vitamin D")
-        self.lis.insertItem(5,"vitamin E")
-        self.lis.insertItem(6,"vitamin K")
+        self.lis.insertItem(1,"Vitamin A")
+        self.lis.insertItem(2,"Vitamin B")
+        self.lis.insertItem(3,"Vitamin C")
+        self.lis.insertItem(4,"Vitamin D")
+        self.lis.insertItem(5,"Vitamin E")
+        self.lis.insertItem(6,"Vitamin K")
         self.lis.currentRowChanged.connect(self.check)
 
         #box layout of vitamin
@@ -345,23 +354,35 @@ class Health(QTabWidget):
         
     def fun1(self):
         lab=QLabel(self.st1)
-        lab.setPixmap(QPixmap('sam.jpg'))
+        lab.setPixmap(QPixmap('A.jpg'))
+        lab.resize(QSize(1200,800))
+        lab.move(0,0)
+        # lab.setScaledContents(True)
+        
     def fun2(self):
         lab=QLabel(self.st2)
-        lab.setPixmap(QPixmap('sam.jpg'))
+        lab.setPixmap(QPixmap('vb.jpg'))
+        lab.resize(QSize(1500,700))
     def fun3(self):
         lab=QLabel(self.st3)
-        lab.setPixmap(QPixmap('sam.jpg'))
+        lab.setPixmap(QPixmap('C.jpg'))
+        
+        
         
     def fun4(self):
         lab=QLabel(self.st4)
-        lab.setPixmap(QPixmap('sam.jpg'))
+        lab.setPixmap(QPixmap('D.jpg'))
+        lab.resize(QSize(1200,800))
+    
     def fun5(self):
         lab=QLabel(self.st5)
-        lab.setPixmap(QPixmap('sam.jpg'))
+        lab.setPixmap(QPixmap('E.jpg'))
+        lab.setScaledContents(True)
     def fun6(self):
         lab=QLabel(self.st6)
-        lab.setPixmap(QPixmap('sam.jpg'))
+        lab.setPixmap(QPixmap('k.jpg'))
+        lab.setScaledContents(True)
+        lab.resize(QSize(1200,800))
     
     def display(self,i):
         self.st.setCurrentIndex(i)
@@ -373,25 +394,25 @@ class Health(QTabWidget):
     #stack of ui 2
     def option_1(self):
         lab1=QLabel(self.stack_1)
-        mov1=QMovie('fi.gif')
+        mov1=QMovie('chest.gif')
         mov1.setScaledSize(QSize(300,300))
         lab1.setMovie(mov1)
         mov1.start()
 
         lab=QLabel(self.stack_1)
-        mov=QMovie('fi.gif')
+        mov=QMovie('chest2.gif')
         mov.setScaledSize(QSize(300,300))
         lab.setMovie(mov)
         mov.start()
 
         lab2=QLabel(self.stack_1)
-        mov2=QMovie('fi.gif')
+        mov2=QMovie('chest3.gif')
         mov2.setScaledSize(QSize(300,300))
         lab2.setMovie(mov2)
         mov2.start()
 
         lab3=QLabel(self.stack_1)
-        mov3=QMovie('fi.gif')
+        mov3=QMovie('chest4.gif')
         mov3.setScaledSize(QSize(300,300))
         lab3.setMovie(mov3)
         mov3.start()
@@ -410,19 +431,19 @@ class Health(QTabWidget):
         mov1.start()
 
         lab=QLabel(self.stack_2)
-        mov=QMovie('fi.gif')
+        mov=QMovie('leg.gif')
         mov.setScaledSize(QSize(300,300))
         lab.setMovie(mov)
         mov.start()
 
         lab2=QLabel(self.stack_2)
-        mov2=QMovie('fi.gif')
+        mov2=QMovie('leg2.gif')
         mov2.setScaledSize(QSize(300,300))
         lab2.setMovie(mov2)
         mov2.start()
 
         lab3=QLabel(self.stack_2)
-        mov3=QMovie('fi.gif')
+        mov3=QMovie('lg.gif')
         mov3.setScaledSize(QSize(300,300))
         lab3.setMovie(mov3)
         mov3.start()
@@ -436,25 +457,25 @@ class Health(QTabWidget):
 
     def option_3(self):
         lab1=QLabel(self.stack_3)
-        mov1=QMovie('fi.gif')
+        mov1=QMovie('bi1.gif')
         mov1.setScaledSize(QSize(300,300))
         lab1.setMovie(mov1)
         mov1.start()
 
         lab=QLabel(self.stack_3)
-        mov=QMovie('fi.gif')
+        mov=QMovie('bi2.gif')
         mov.setScaledSize(QSize(300,300))
         lab.setMovie(mov)
         mov.start()
 
         lab2=QLabel(self.stack_3)
-        mov2=QMovie('fi.gif')
+        mov2=QMovie('bi3.gif')
         mov2.setScaledSize(QSize(300,300))
         lab2.setMovie(mov2)
         mov2.start()
 
         lab3=QLabel(self.stack_3)
-        mov3=QMovie('fi.gif')
+        mov3=QMovie('bi4.gif')
         mov3.setScaledSize(QSize(300,300))
         lab3.setMovie(mov3)
         mov3.start()
@@ -467,30 +488,90 @@ class Health(QTabWidget):
         
     def option_4(self):
         lab1=QLabel(self.stack_4)
-        mov1=QMovie('fi.gif')
+        mov1=QMovie('tr4.gif')
         mov1.setScaledSize(QSize(300,300))
         lab1.setMovie(mov1)
         mov1.start()
 
         lab=QLabel(self.stack_4)
-        mov=QMovie('fi.gif')
+        mov=QMovie('tri.gif')
         mov.setScaledSize(QSize(300,300))
         lab.setMovie(mov)
         mov.start()
 
         lab2=QLabel(self.stack_4)
-        mov2=QMovie('fi.gif')
+        mov2=QMovie('tr2.gif')
         mov2.setScaledSize(QSize(300,300))
         lab2.setMovie(mov2)
         mov2.start()
 
         lab3=QLabel(self.stack_4)
-        mov3=QMovie('fi.gif')
+        mov3=QMovie('tr3.gif')
         mov3.setScaledSize(QSize(300,300))
         lab3.setMovie(mov3)
         mov3.start()
         #pack in to layout 
         grid=QGridLayout(self.stack_4)
+        grid.addWidget(lab,0,0)
+        grid.addWidget(lab1,0,1)
+        grid.addWidget(lab2,1,0)
+        grid.addWidget(lab3,1,1)
+    def option_5(self):
+        lab1=QLabel(self.stack_5)
+        mov1=QMovie('shoulder.gif')
+        mov1.setScaledSize(QSize(300,300))
+        lab1.setMovie(mov1)
+        mov1.start()
+
+        lab=QLabel(self.stack_5)
+        mov=QMovie('shoulder2.gif')
+        mov.setScaledSize(QSize(300,300))
+        lab.setMovie(mov)
+        mov.start()
+
+        lab2=QLabel(self.stack_5)
+        mov2=QMovie('shoulder3.gif')
+        mov2.setScaledSize(QSize(300,300))
+        lab2.setMovie(mov2)
+        mov2.start()
+
+        lab3=QLabel(self.stack_5)
+        mov3=QMovie('sh4.gif')
+        mov3.setScaledSize(QSize(300,300))
+        lab3.setMovie(mov3)
+        mov3.start()
+        #pack in to layout 
+        grid=QGridLayout(self.stack_5)
+        grid.addWidget(lab,0,0)
+        grid.addWidget(lab1,0,1)
+        grid.addWidget(lab2,1,0)
+        grid.addWidget(lab3,1,1)
+    def option_6(self):
+        lab1=QLabel(self.stack_6)
+        mov1=QMovie('bck.gif')
+        mov1.setScaledSize(QSize(300,300))
+        lab1.setMovie(mov1)
+        mov1.start()
+
+        lab=QLabel(self.stack_6)
+        mov=QMovie('bck2.gif')
+        mov.setScaledSize(QSize(300,300))
+        lab.setMovie(mov)
+        mov.start()
+
+        lab2=QLabel(self.stack_6)
+        mov2=QMovie('back2.gif')
+        mov2.setScaledSize(QSize(300,300))
+        lab2.setMovie(mov2)
+        mov2.start()
+
+        lab3=QLabel(self.stack_6)
+        mov3=QMovie('back.gif')
+        mov3.setScaledSize(QSize(300,300))
+        lab3.setMovie(mov3)
+        mov3.start()
+        #pack in to layout 
+        grid=QGridLayout(self.stack_6)
         grid.addWidget(lab,0,0)
         grid.addWidget(lab1,0,1)
         grid.addWidget(lab2,1,0)
