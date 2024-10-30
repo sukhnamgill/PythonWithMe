@@ -1,3 +1,3 @@
-import module_2
-s=module_2
-s.greet("japman","pm")
+print(True+False)
+# print(True*True)
+# print(False*False)
