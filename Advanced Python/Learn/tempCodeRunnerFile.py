@@ -1,3 +1,1 @@
-print(True+False)
-# print(True*True)
-# print(False*False)
+self.view.defaultFrameGraph().setClearColor(QtGui.QColor("#bdbdbd"))
